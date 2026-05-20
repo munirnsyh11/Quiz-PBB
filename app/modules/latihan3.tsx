@@ -1,110 +1,110 @@
 import {
-    Image,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
+  Image,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from "react-native";
 
 export default function Latihan3() {
-  const personalData = {
-    name: "Muhamad Munir Riansyah",
-    nim: "242310027",
-    phone: "083871670195",
-    email: "munirriansyah@gmail.com",
-    address: "Bogor",
-    age: 21,
-    isStudent: true,
-    hobby: ["berlari", "berenang", "bersepeda"],
-  };
-
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <SafeAreaView style={styles.container}>
+      {/* Avatar */}
       <Image
         source={require("../../assets/images/avatar.png")}
         style={styles.avatar}
       />
 
-      <Text style={styles.text}>{personalData.name}</Text>
-      <Text style={styles.text}>{personalData.nim}</Text>
+      {/* Form */}
+      <View style={styles.formContainer}>
+        <View style={styles.inputGroup}>
+          <Text style={styles.label}>Nama:</Text>
+          <TextInput style={styles.input} value="Muhamad Munir Riansyah" />
+        </View>
 
-      {/* FORM */}
-      <View style={styles.inputContainer}>
-        <Text>Phone</Text>
-        <TextInput style={styles.input} value={personalData.phone} />
+        <View style={styles.inputGroup}>
+          <Text style={styles.label}>NIP:</Text>
+          <TextInput style={styles.input} value="242310027" />
+        </View>
 
-        <Text>Email</Text>
-        <TextInput style={styles.input} value={personalData.email} />
+        <View style={styles.inputGroup}>
+          <Text style={styles.label}>Jabatan:</Text>
+          <TextInput style={styles.input} value="Mahasiswa" />
+        </View>
 
-        <Text>Address</Text>
-        <TextInput style={styles.input} value={personalData.address} />
-
-        <Text>Age</Text>
-        <TextInput style={styles.input} value={String(personalData.age)} />
-
-        <Text>Student</Text>
-        <TextInput
-          style={styles.input}
-          value={personalData.isStudent ? "Yes" : "No"}
-        />
-
-        <Text>Hobby</Text>
-        <TextInput style={styles.input} value={personalData.hobby.join(", ")} />
+        <View style={styles.inputGroup}>
+          <Text style={styles.label}>Institusi:</Text>
+          <TextInput style={styles.input} value="IBI Kesatuan" />
+        </View>
       </View>
 
-      {/* BUTTON */}
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => alert("Data disimpan")}
-      >
-        <Text style={styles.buttonText}>Save Changes</Text>
+      {/* Button */}
+      <TouchableOpacity style={styles.button}>
+        <Text style={styles.buttonText}>Submit</Text>
       </TouchableOpacity>
-    </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flexGrow: 1,
-    alignItems: "center",
+    flex: 1,
+    backgroundColor: "#f5f5f5",
     justifyContent: "center",
-    padding: 20,
-    backgroundColor: "#fff",
-  },
-  avatar: {
-    width: 120,
-    height: 120,
-    borderRadius: 60,
-    marginBottom: 15,
-  },
-  text: {
-    fontSize: 16,
-    fontWeight: "bold",
-    marginBottom: 5,
-  },
-  inputContainer: {
-    width: "100%",
-    marginTop: 20,
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: "#ccc",
-    padding: 8,
-    marginBottom: 10,
-    borderRadius: 5,
-  },
-  button: {
-    marginTop: 15,
-    backgroundColor: "#1e90ff",
-    padding: 12,
-    borderRadius: 5,
-    width: "100%",
     alignItems: "center",
+    paddingHorizontal: 20,
   },
+
+  avatar: {
+    width: 140,
+    height: 140,
+    borderRadius: 70,
+    borderWidth: 4,
+    borderColor: "#000",
+    marginBottom: 30,
+  },
+
+  formContainer: {
+    width: "100%",
+  },
+
+  inputGroup: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 18,
+  },
+
+  label: {
+    width: 80,
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#999",
+  },
+
+  input: {
+    flex: 1,
+    borderWidth: 1,
+    borderColor: "#aaa",
+    borderRadius: 10,
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+    backgroundColor: "#fff",
+    fontSize: 16,
+  },
+
+  button: {
+    marginTop: 20,
+    backgroundColor: "#22a6d5",
+    paddingVertical: 14,
+    paddingHorizontal: 35,
+    borderRadius: 12,
+  },
+
   buttonText: {
     color: "#fff",
     fontWeight: "bold",
+    fontSize: 20,
   },
 });
